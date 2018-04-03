@@ -29,14 +29,14 @@ namespace Bot_Attendance_Payroll.Dialogs
         protected string AuthenticationType { get; set; }
 
         
-        public Task StartAsync(IDialogContext context)
+        public async Task StartAsync(IDialogContext context)
         {
 
             context.PostAsync("Please Enter your username>>..");
 
             context.Wait(abc);
            
-            return Task.CompletedTask;
+           
          
         }
         private async Task abc(IDialogContext context, IAwaitable<object> result)
@@ -57,8 +57,18 @@ namespace Bot_Attendance_Payroll.Dialogs
             password = (pass.Text);
             var ac = new AuthenticationCalling();
             string t = await ac.TokenCalling(username, password);
-            await context.PostAsync($"Response is {t}");
-            context.UserData.SetValue("token",t);
+            if (t == null)
+            {
+                context.PostAsync("you have enterd wrong credentials<br>"+" re-login<br>"+"Enter your username");
+                context.Wait(abc);
+            }
+
+            if(t!=null)
+            {
+                await context.PostAsync($"Response is {t}");
+                context.UserData.SetValue("token", t);
+                context.Done(true);
+            }
             /*Conversation.UpdateContainer(
                builder =>
                {
@@ -69,9 +79,9 @@ namespace Bot_Attendance_Payroll.Dialogs
                           .SingleInstance();
 
                });*/
-            context.Done(true);
-        } 
-        
+           
+        }
+       
     }
    
 }

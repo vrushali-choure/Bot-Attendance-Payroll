@@ -43,13 +43,26 @@ namespace Bot_Attendance_Payroll.Dialogs
             BotData userData = await stateClient.BotState.GetUserDataAsync(activity.ChannelId, activity.From.Id);
             var obj = JObject.Parse(userData.Data.ToString());
             var token = (string)obj["token"];
-            var pc = new ProductCalling();
-            string t = await pc.ProductDetails(token);
-            await context.PostAsync($"Response is {t}");                    
-            context.Done(true);
+            if(token==null)
+            {
+                context.PostAsync("Need to Login to access data");
+                context.Call(new UserLogin(), ResumeAfteNullToken);
+            
+            }
+            if (token != null)
+            {
+                var pc = new ProductCalling();
+                string t = await pc.ProductDetails(token);
+
+                await context.PostAsync($"Response is {t}");
+                context.Done(true);
+            }
         }
 
-       
+        private async Task ResumeAfteNullToken(IDialogContext context, IAwaitable<object> result)
+        {
+            context.PostAsync("Login Successful!!!");
+        }
     }
     public class SessionResponse
     {

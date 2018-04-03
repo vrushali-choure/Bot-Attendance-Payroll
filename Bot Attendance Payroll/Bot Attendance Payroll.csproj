@@ -171,6 +171,8 @@
   <ItemGroup>
     <Content Include="default.htm" />
     <Content Include="Global.asax" />
+    <Content Include="Images\base_pay.PNG" />
+    <Content Include="Images\declaration.PNG" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\payslip.PNG" />
     <Content Include="Images\ticket.jpg" />
@@ -188,6 +190,7 @@
     <Compile Include="Dialogs\ApplyLeaveFormFlow.cs" />
     <Compile Include="Dialogs\AttendanceDialog.cs" />
     <Compile Include="Dialogs\AuthenticationOfUser.cs" />
+    <Compile Include="Dialogs\Avg_Hrs.cs" />
     <Compile Include="Dialogs\AzureAuthentication.cs" />
     <Compile Include="Dialogs\Base_pay.cs" />
     <Compile Include="Dialogs\Compoff.cs" />
@@ -197,6 +200,7 @@
     <Compile Include="Dialogs\Esi_tax.cs" />
     <Compile Include="Dialogs\Experience.cs" />
     <Compile Include="Dialogs\FormFlowTour.cs" />
+    <Compile Include="Dialogs\Gross_Hrs.cs" />
     <Compile Include="Dialogs\Gross_pay.cs" />
     <Compile Include="Dialogs\HalfDay.cs" />
     <Compile Include="Dialogs\HalfDayFormFlow.cs" />
@@ -209,6 +213,7 @@
     <Compile Include="Dialogs\Join_date.cs" />
     <Compile Include="Dialogs\Late_Comings.cs" />
     <Compile Include="Dialogs\LeaveFormFlow.cs" />
+    <Compile Include="Dialogs\LopDetails.cs" />
     <Compile Include="Dialogs\Lta_allowance.cs" />
     <Compile Include="Dialogs\Medical_allowance.cs" />
     <Compile Include="Dialogs\Mispunch.cs" />
@@ -223,7 +228,8 @@
     <Compile Include="Dialogs\Professional_tax_deducted.cs" />
     <Compile Include="Dialogs\Projected_tax.cs" />
     <Compile Include="Dialogs\SandwichLeave.cs" />
-    <Compile Include="Dialogs\Section.cs" />
+    <Compile Include="Dialogs\Section80C.cs" />
+    <Compile Include="Dialogs\Section80D.cs" />
     <Compile Include="Dialogs\Tax_deductions.cs" />
     <Compile Include="Dialogs\Tds_deduction.cs" />
     <Compile Include="Dialogs\Tour.cs" />

@@ -8,18 +8,18 @@ using System.Web;
 namespace Bot_Attendance_Payroll.Dialogs
 {
     [Serializable]
-    public class Net_Hrs : IDialog<object>
+    public class Section80D : IDialog<object>
     {
         public async Task StartAsync(IDialogContext context)
         {
-            await context.PostAsync("Do you want see Net Hrs details..");
-            context.Wait(this.abc);
+            await context.PostAsync("Do you want see decalaration under 80/d");
+            context.Wait(this.Declaration_under_80D);
         }
 
-        private async Task abc(IDialogContext context, IAwaitable<object> result)
+        private async Task Declaration_under_80D(IDialogContext context, IAwaitable<object> result)
         {
             var message = await result;
-            await context.PostAsync("your net working hrs are 6hrs");
+            await context.PostAsync("Your declaration under 80/D is..");
             context.Done(true);
         }
     }

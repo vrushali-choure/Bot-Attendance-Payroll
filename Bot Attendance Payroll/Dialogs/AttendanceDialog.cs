@@ -669,10 +669,16 @@ namespace Bot_Attendance_Payroll.Dialogs
             context.Call(new Hrs_work_holiday(), this.ResumeAfterTaskDialog);
         }
         //k21:Section 80d,80c
-        [LuisIntent("Section")]
-        public async Task Section(IDialogContext context, LuisResult result)
+        [LuisIntent("80c")]
+        public async Task Section_80_C(IDialogContext context, LuisResult result)
         {
-            context.Call(new Section(), this.ResumeAfterTaskDialog);
+            context.Call(new Section80C(), this.ResumeAfterTaskDialog);
+        }
+
+        [LuisIntent("80")]
+        public async Task Section_80_D(IDialogContext context, LuisResult result)
+        {
+            context.Call(new Section80D(), this.ResumeAfterTaskDialog);
         }
         //k22:Tds_deduction 
         [LuisIntent("Tds_deduction")]
@@ -710,10 +716,35 @@ namespace Bot_Attendance_Payroll.Dialogs
         {
             context.Call(new Late_Comings(), this.ResumeAfterTaskDialog);
         }
+
         [LuisIntent("Early_leavings")]
         public async Task Early_leavings(IDialogContext context, LuisResult result)
         {
-            context.Call(new Early_leavings(), this.ResumeAfterTaskDialog);
+            context.Call(new Net_Hrs(), this.ResumeAfterTaskDialog);
+        }
+
+        [LuisIntent("Gross_Hrs")]
+        public async Task Gross_Hrs(IDialogContext context, LuisResult result)
+        {
+            context.Call(new Gross_Hrs(), this.ResumeAfterTaskDialog);
+        }
+
+
+        [LuisIntent("Avg_Hrs")]
+        public async Task Avg_Hrs(IDialogContext context, LuisResult result)
+        {
+            context.Call(new Avg_Hrs(), this.ResumeAfterTaskDialog);
+        }
+
+        [LuisIntent("Net_Hrs")]
+        public async Task Net_Hrs(IDialogContext context, LuisResult result)
+        {
+            context.Call(new Net_Hrs(), this.ResumeAfterTaskDialog);
+        }
+        [LuisIntent("Lop")]
+        public async Task Lop(IDialogContext context, LuisResult result)
+        {
+            context.Call(new LopDetails(), this.ResumeAfterTaskDialog);
         }
 
 

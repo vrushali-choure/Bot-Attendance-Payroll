@@ -32,13 +32,11 @@ namespace Zest_Client
                 string t = token.ToString();
                 return t;
             }
-
             else
             {
-                return ("You have entered wrong credentials !!!..");
-                
-                
+                return null;
             }
+           
         }
     }
     public class AuthenticationResponse
