@@ -19,9 +19,11 @@ namespace Bot_Attendance_Payroll.Dialogs
         public async Task StartAsync(IDialogContext context)
         {
 
-            var leaveform = FormDialog.FromForm(LeaveFormFlow.LeaveEncashmentForm, FormOptions.PromptInStart);
-            context.Call(leaveform, FormSelection);
+            // var leaveform = FormDialog.FromForm(LeaveFormFlow.LeaveEncashmentForm, FormOptions.PromptInStart);
+            //context.Call(leaveform, FormSelection);
 
+            context.PostAsync("Yes you can apply for leave encashment if you have enough balance");
+            context.Done(true);
                         
         }
         private async Task FormSelection(IDialogContext context, IAwaitable<LeaveFormFlow> result)

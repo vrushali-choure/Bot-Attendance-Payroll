@@ -13,13 +13,8 @@ namespace Bot_Attendance_Payroll.Dialogs
     {
       
             
-            public RequestTypes requestTypes;
-            //public LeaveTypes leaveTypes;
-            //public IsApply isApply;
-            //public DateTime? DateOfLeave;
-        //[Numeric(1, 5)]// will take numeric value between 1-5
-        //public int? NumberOfLeaves;
-
+        public RequestTypes requestTypes;
+            
         [Prompt("What's your full name?")]
         public string Name { get; set; }
 

@@ -14,10 +14,11 @@ namespace Bot_Attendance_Payroll.Dialogs
 
         public async Task StartAsync(IDialogContext context)
         {
-            //  await context.PostAsync("What is your WorkFromHome Details");
-            var workform = FormDialog.FromForm(WorkFromHomeFormFlow.WorkFromHomeForm, FormOptions.PromptInStart);
-            context.Call(workform, ResumeAfterCallingWorkFromHome);
+             await context.PostAsync("Yes you can apply for work from home");
 
+            //var workform = FormDialog.FromForm(WorkFromHomeFormFlow.WorkFromHomeForm, FormOptions.PromptInStart);
+            //context.Call(workform, ResumeAfterCallingWorkFromHome);
+            context.Done(true);
         }
 
         private async Task ResumeAfterCallingWorkFromHome(IDialogContext context, IAwaitable<WorkFromHomeFormFlow> result)

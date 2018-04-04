@@ -8,12 +8,14 @@ using System.Web;
 namespace Bot_Attendance_Payroll.Dialogs
 {
     [Serializable]
-    public class Work_on_holiday : IDialog<object>
+    public class Bank_Account : IDialog<object>
     {
         public async Task StartAsync(IDialogContext context)
         {
-            await context.PostAsync("Yes, We welocme you to work on holiday");
+
+            await context.PostAsync("Salary account is in SBI");
             context.Done(true);
+
         }
 
     }

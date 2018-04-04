@@ -35,9 +35,6 @@ namespace Bot_Attendance_Payroll.Dialogs
 
                 context.PostAsync("Authenticating user...");
                 context.Call(new UserLogin(), ResumeAfterUserLogin);
-              //  var formFLow = FormDialog.FromForm(EmployeeDetailsForm.BuildForm, FormOptions.PromptInStart);
-                //context.Call(formFLow, Formloaded);
-
             }
 
             else if (msg.Text.Equals("good morning", StringComparison.InvariantCultureIgnoreCase))
@@ -51,8 +48,7 @@ namespace Bot_Attendance_Payroll.Dialogs
                 await context.PostAsync("hi how can I help you");
             }
 
-           
-            
+                      
         }
 
         public async Task ResumeAfterUserLogin(IDialogContext context, IAwaitable<object> result)
@@ -71,143 +67,33 @@ namespace Bot_Attendance_Payroll.Dialogs
         [LuisIntent("Leave_Encashment")]
         public async Task LeaveEncashment(IDialogContext context, LuisResult result)
         {
-            await context.PostAsync("Wait......");
-            context.Call(new LeaveDialog(), ResumeAfterLeaveDialog);
-
+                   context.Call(new LeaveDialog(), this.ResumeAfterTaskDialog);
 
         }
 
        
-        private async Task ResumeAfterLeaveDialog(IDialogContext context, IAwaitable<object> result)
+        [LuisIntent("Leave_Encashment_types")]
+        public async Task Leave_Encashment_types(IDialogContext context, LuisResult result)
         {
-             await context.PostAsync("Forwarded your request to Accounts dept");
 
-            await context.PostAsync("You me check for other request for leave encashment...<br>"
-                + "1.Type *Number of leave encashed* to know no leave encashed<br>"
-                + "2.Type *calculation of leave encashemt* to know leave encashment calculation system<br>"
-                + "3.Type *leave encashment not credited* if your leave encashment is not credited <br>"
-                + "4.Type *leave encashment amount* to know leave encashment amount you can get.. <br>"
-                + "5.Type *leave encashment cycle* to know about leave encashment cycle <br>"
-                + "6.Type *how will I get leave encashment amount* to know about leave encashment deposit <br>"
-
-                );
-
-           
-        }
-
-        // v1.1 No of leaves get encashed
-        [LuisIntent("No_of_LeaveEncashed")]
-        public async Task No_of_LeaveEncashed(IDialogContext context, LuisResult result)
-        {
-           
-            context.Call(new No_of_LeaveEncashed(), this.ResumeAfterLeaveDialog);
-    
-        }
-        // v1.2 calculation of leave encashment
-        [LuisIntent("Calculation_of_LeaveEncashment ")]
-        public async Task Calculation_of_LeaveEncashment(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync("Leave encashment calculation is done on basic salary");
-
-        }
-        //v1.3 leaveencashment credit
-        [LuisIntent("leaveencashment_credit  ")]
-        public async Task leaveencashment_credit(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync("It will be deposited in your account");
-
-        }
-
-        //v1.4 leaveencashment resign
-        [LuisIntent("Leave_encashment_resign  ")]
-        public async Task Leave_encashment_resign(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync("Yes you can get leave encashment benifit if you resign");
-
-        }
-
-        //v1.5 leave encashment cycle
-        [LuisIntent("leave_encashment_cycle")]
-        public async Task leave_encashment_cycle(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync("leave encashment cycle is for 6 months");
-
-        }
-        //v1.5 leave encashment not ques // leave encashment disapprove
-        [LuisIntent("leave_encashment_not ")]
-        public async Task leave_encashment_not(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync("Oh..I need to check, request forwarded to your HR");
-
-        }
-
-        // v1.6 amount from leave encashment  // leave encashment amount
-
-        [LuisIntent("leave_encashment_amount  ")]
-        public async Task leave_encashment_amount(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync("You will get 30,000 rs");
+            context.Call(new Leave_Encashment_types(), this.ResumeAfterTaskDialog);
 
         }
 
 
-
-        //2.Tour
+        ////2.Tour
         [LuisIntent("Tour")]
         public async Task CallingTourMethod(IDialogContext context, LuisResult result)
         {
                        
-            await context.PostAsync("Wait......");
-            context.Call(new Tour(), ResumeAfterCallingTour);
+            
+            context.Call(new Tour(), this.ResumeAfterTaskDialog);
 
 
         }
 
-        public async Task ResumeAfterCallingTour(IDialogContext context, IAwaitable<object> activity)
-        {
-            await context.PostAsync("Forwarded your request to Your Manager");
-            await context.PostAsync("Check more for tour..."
-                 +"1.Type *Accomodation Allowance* to know about accomodation allowance<br>"
-                + "2.Type *Travel Allowance* to know about travel allowance<br>"
-                + "3.Type *Tour application status* to check status of tour <br>"
-                + "4.Type *Reason for tour disapproved* to know reason for disapproval of tour <br>"
-                + "5.Type *Tour Details* to know about your tour details <br>"
-                );
-        }
 
-        // v2.1 accomodation_allowance
-        [LuisIntent("Accomodation_Allowance")]
-        public async Task Accomodation_Allowance(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync("Yes you can get accomadation_allowance<br>"+"Put up your bill after tour<br>");
-            await context.PostAsync("Max Allowance for accomodation allowed is 5000 Rs");
-
-        }
-        // v2.2 accomodation_allowance
-        [LuisIntent("Travel_Allowance")]
-        public async Task Travel_Allowance(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync("Yes you can get travel_allowance<br>" + "Put up your bill after tour<br>");
-            await context.PostAsync("Max Allowance for travel allowed is 3000 Rs");
-
-        }
-
-        // v2.3 tour status
-        [LuisIntent("Tour_Application_Status ")]
-        public async Task Tour_Application_Status(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync("It has be sent to your manager<br>"+"**Status**:pending for approval");  
-
-        }
-
-        // v2.4 Tour_Disapproval 
-        [LuisIntent("Tour_Disapproval ")]
-        public async Task Tour_Disapproval(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync("Your tour is reschedule<br>" + "**Reason**:Client Meeting");
-
-        }
-
+       
         // v2.5 Tour_Details
         [LuisIntent("Tour_Details ")]
         public async Task Tour_Details(IDialogContext context, LuisResult result)
@@ -222,24 +108,13 @@ namespace Bot_Attendance_Payroll.Dialogs
         [LuisIntent("Outdoor")]
         public async Task CallingOutdoorMethod(IDialogContext context, LuisResult result)
         {
-            await context.PostAsync(" I am Outdoor Duty");
-            context.Call(new OutdoorDuty(), ResumeAfterCallingOutdoorDuty);
+            
+            context.Call(new OutdoorDuty(), this.ResumeAfterTaskDialog);
         }
-
-        public async Task ResumeAfterCallingOutdoorDuty(IDialogContext context, IAwaitable<object> result)
+        [LuisIntent("Outdoor_Details")]
+        public async Task Outdoor_Details(IDialogContext context, LuisResult result)
         {
-            await context.PostAsync("Your request is forwarded");
-            await context.PostAsync("You me check for other request also..."
-                 + "1.Type *apply outdoor duty* to apply for outdoor duty <br>"
-                + "2.Type *travel allowance* to check travel allowance<br>"
-                );
-
-        }
-        // v3.1 Outdoorduty_Disapproval 
-        [LuisIntent("Outdoor_Disapproved")]
-        public async Task Outdoor_Disapproved(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync("Your outdoor duty is reschedule<br>" + "**Reason**:Client Meeting");
+            await context.PostAsync("Your outdoor duty deatils are as follows<br>" + "1.Tour StartDate:18-03-2018<br>" + "2.Tour End: 20-03-2018<br>" + "3.Place:Delhi<br>");
 
         }
 
@@ -248,62 +123,15 @@ namespace Bot_Attendance_Payroll.Dialogs
         [LuisIntent("WorkFromHome")]
         public async Task CallingWorkFromHome(IDialogContext context, LuisResult result)
         {
-            var workform = FormDialog.FromForm(WorkFromHomeFormFlow.WorkFromHomeForm, FormOptions.PromptInStart);
-            context.Call(workform, ResumeAfterCallingWorkFromHome);
+
+            context.Call(new WorkFromHome(), this.ResumeAfterTaskDialog);
 
         }
 
-        private async Task ResumeAfterCallingWorkFromHome(IDialogContext context, IAwaitable<WorkFromHomeFormFlow> result)
-        {
-            await context.PostAsync("Your request is forwared");
-            await context.PostAsync("You me check for other request also..."
-                 + "1.Type *Max days for work from home* to check max work home days<br>"
-                + "2.Type *working hours for work from home* to check  work fom home hours<br>"
-                + "3.Type *work from home disapproved* to know reason for disapproved <br>");
+      
 
-        }
-
-
-        // v4.1 Max_days_wfh  
-        [LuisIntent("Max_days_wfh ")]
-        public async Task Max_days_wfh(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync("You can work max 20 days as work from home in a year <br>"+"Max in 8 times in a month");
-
-        }
-
-        // v4.2 Working_hrs_workfh  
-        [LuisIntent("Working_hrs_workfh ")]
-        public async Task Working_hrs_workfh(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync(" You need to work net 6hrs for work from home");
-
-        }
-
-        // v4.3 Disapprove_workfh   
-        [LuisIntent("Disapprove_workfh  ")]
-        public async Task Disapprove_workfh(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync("You are not eligible for work from home");
-
-        }
-
-        //v.5 WorkTime
-        [LuisIntent("Work_Time")]
-        public async Task CallingWorkTimeMethod(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync(" i am workTime");
-            context.Call(new WorkTime(), ResumeAfterCallingWorkTime);
-
-        }
-
-        public async Task ResumeAfterCallingWorkTime(IDialogContext context, IAwaitable<object> result)
-        {
-            await context.PostAsync(" Your equest send for approval");
-        }
-
-
-
+       
+              
         //6.Misspunch
         [LuisIntent("Mispunch")]
         private async Task CallingMisspunchMethod(IDialogContext context, LuisResult result)
@@ -331,23 +159,13 @@ namespace Bot_Attendance_Payroll.Dialogs
         }
 
 
-        // v7.1 Compoff_redeem   
-        [LuisIntent("Compoff_redeem")]
-        public async Task Compoff_redeem(IDialogContext context, LuisResult result)
-        {
-            await context.PostAsync("Yes , your compoff can be redeem <br>");
-
-        }
-
+        
         
         //6.Apply
         [LuisIntent("Apply_leave ")]
         public async Task Apply_Leave(IDialogContext context, LuisResult result)
         {
-            
-            context.Call(new ApplyingLeave(),ResumeAfterLeaveApply);
-
-
+           context.Call(new ApplyingLeave(),ResumeAfterLeaveApply);
         }
 
         private async Task ResumeAfterLeaveApply(IDialogContext context, IAwaitable<object> result)
@@ -355,13 +173,23 @@ namespace Bot_Attendance_Payroll.Dialogs
             await context.PostAsync("Your leave has been  granted by your manager");
         }
 
+        [LuisIntent("Lop")]
+        public async Task Lop(IDialogContext context, LuisResult result)
+        {
+            context.Call(new LopDetails(), this.ResumeAfterTaskDialog);
+        }
 
+        [LuisIntent("Late_Comings")]
+        public async Task Late_Comings(IDialogContext context, LuisResult result)
+        {
+            context.Call(new Late_Comings(), this.ResumeAfterTaskDialog);
+        }
 
-
-
-
-
-
+        [LuisIntent("Early_leavings")]
+        public async Task Early_leavings(IDialogContext context, LuisResult result)
+        {
+            context.Call(new Net_Hrs(), this.ResumeAfterTaskDialog);
+        }
 
 
         // 2. Calling Profile
@@ -377,7 +205,6 @@ namespace Bot_Attendance_Payroll.Dialogs
         {
             await context.PostAsync(" Your profile request send for approval");
         }
-
 
 
         //3. Calling Payroll
@@ -397,24 +224,6 @@ namespace Bot_Attendance_Payroll.Dialogs
         }
 
         
-
-
-
-        //4 Holidays
-        //[LuisIntent("Holidays")]
-        //public async Task CallingHolidaysMethod(IDialogContext context, LuisResult result)
-        //{
-        //    await context.PostAsync("I am Holidays");
-        //    context.Call(new Holiday(), ResumeAfterCallingHoliday);
-
-        //}
-        //// Resume after Calling Holiday
-        //public async Task ResumeAfterCallingHoliday(IDialogContext context, IAwaitable<object> result)
-        //{
-        //    await context.PostAsync(" Your equest send for approval");
-        //}
-
-
 
 
 
@@ -500,9 +309,7 @@ namespace Bot_Attendance_Payroll.Dialogs
             else if(token.requestTypes.Equals("Profile"))
             {
                 context.Wait(MessageReceived);
-            }
-            
-           
+            }     
         }
 
         
@@ -545,6 +352,16 @@ namespace Bot_Attendance_Payroll.Dialogs
 
             context.Wait(MessageReceived);
         }
+
+        //PROFILE
+
+        //k1:Probation_Period
+        [LuisIntent("Probation_Period")]
+        public async Task Probation_period(IDialogContext context, LuisResult result)
+        {
+            context.Call(new Probation_Period(), this.ResumeAfterTaskDialog);
+        }
+
         //k2:Join_date
         [LuisIntent("Join_date")]
         public async Task Join_date(IDialogContext context, LuisResult result)
@@ -552,20 +369,26 @@ namespace Bot_Attendance_Payroll.Dialogs
             context.Call(new Join_date(), this.ResumeAfterTaskDialog);
         }
 
-
         //k3:Experience
         [LuisIntent("Experience")]
         public async Task Experience(IDialogContext context, LuisResult result)
         {
             context.Call(new Experience(), this.ResumeAfterTaskDialog);
         }
-        //k4:Holidays
+
+        //k4:Bank_Account
+        [LuisIntent("Bank_Account")]
+        public async Task Bank_Account(IDialogContext context, LuisResult result)
+        {
+            context.Call(new Bank_Account(), this.ResumeAfterTaskDialog);
+        }
+
+
+        //HOLIDAYS
         [LuisIntent("Holidays")]
        
         public async Task Holidays(IDialogContext context, LuisResult result)
         {
-            //await context.PostAsync("3 years");
-            //context.Wait(MessageReceived);
             context.Call(new Holidays(), this.ResumeAfterTaskDialog);
         }
         //k5:Work_on_holiday
@@ -580,8 +403,14 @@ namespace Bot_Attendance_Payroll.Dialogs
         public async Task Hrs_work_holiday(IDialogContext context, LuisResult result)
         {
             context.Call(new Hrs_work_holiday(), this.ResumeAfterTaskDialog);
-
         }
+
+
+
+
+
+        //PAYROLL
+
         //k7:House_rent_allowance
         [LuisIntent("House_rent_allowance")]
         public async Task House_rent_allowance(IDialogContext context, LuisResult result)
@@ -655,19 +484,14 @@ namespace Bot_Attendance_Payroll.Dialogs
             context.Call(new Esi_tax(), this.ResumeAfterTaskDialog);
         }
 
-
-        //k19:Projected_tax
-        [LuisIntent("Projected_tax")]
-        public async Task Projected_tax(IDialogContext context, LuisResult result)
-        {
-            context.Call(new Projected_tax(), this.ResumeAfterTaskDialog);
-        }
-        //k20:Investment_details 
+             
+        ////k20:Investment_details 
         [LuisIntent("Investment_details")]
         public async Task Investment_details(IDialogContext context, LuisResult result)
         {
             context.Call(new Hrs_work_holiday(), this.ResumeAfterTaskDialog);
         }
+
         //k21:Section 80d,80c
         [LuisIntent("80c")]
         public async Task Section_80_C(IDialogContext context, LuisResult result)
@@ -675,7 +499,7 @@ namespace Bot_Attendance_Payroll.Dialogs
             context.Call(new Section80C(), this.ResumeAfterTaskDialog);
         }
 
-        [LuisIntent("80")]
+        [LuisIntent("80d")]
         public async Task Section_80_D(IDialogContext context, LuisResult result)
         {
             context.Call(new Section80D(), this.ResumeAfterTaskDialog);
@@ -686,12 +510,15 @@ namespace Bot_Attendance_Payroll.Dialogs
         {
             context.Call(new Tds_deduction(), this.ResumeAfterTaskDialog);
         }
+
+
         //k23:Allowances 
         [LuisIntent("Allowances")]
         public async Task Allowances(IDialogContext context, LuisResult result)
         {
             context.Call(new Allowances(), this.ResumeAfterTaskDialog);
         }
+
         [LuisIntent("Half_day")]
         public async Task Half_day(IDialogContext context, LuisResult result)
         {
@@ -710,19 +537,12 @@ namespace Bot_Attendance_Payroll.Dialogs
         {
             context.Call(new In_Out_Time(), this.ResumeAfterTaskDialog);
         }
+
+
+
+        //ATTENDANCE
         //k27:Late comings of the month
-        [LuisIntent("Late_Comings")]
-        public async Task Late_Comings(IDialogContext context, LuisResult result)
-        {
-            context.Call(new Late_Comings(), this.ResumeAfterTaskDialog);
-        }
-
-        [LuisIntent("Early_leavings")]
-        public async Task Early_leavings(IDialogContext context, LuisResult result)
-        {
-            context.Call(new Net_Hrs(), this.ResumeAfterTaskDialog);
-        }
-
+       
         [LuisIntent("Gross_Hrs")]
         public async Task Gross_Hrs(IDialogContext context, LuisResult result)
         {
@@ -740,11 +560,6 @@ namespace Bot_Attendance_Payroll.Dialogs
         public async Task Net_Hrs(IDialogContext context, LuisResult result)
         {
             context.Call(new Net_Hrs(), this.ResumeAfterTaskDialog);
-        }
-        [LuisIntent("Lop")]
-        public async Task Lop(IDialogContext context, LuisResult result)
-        {
-            context.Call(new LopDetails(), this.ResumeAfterTaskDialog);
         }
 
 

@@ -25,3 +25,4 @@ C:\Users\Vrushali\source\repos\Bot Attendance Payroll\Zest_Client\obj\Debug\Zest
 C:\Users\Vrushali\source\repos\Bot Attendance Payroll\Zest_Client\obj\Debug\Zest_Client.csproj.CoreCompileInputs.cache
 C:\Users\Vrushali\source\repos\Bot Attendance Payroll\Zest_Client\obj\Debug\Zest_Client.dll
 C:\Users\Vrushali\source\repos\Bot Attendance Payroll\Zest_Client\obj\Debug\Zest_Client.pdb
+C:\Users\Vrushali\source\repos\Bot Attendance Payroll\Zest_Client\obj\Debug\Zest_Client.csprojResolveAssemblyReference.cache

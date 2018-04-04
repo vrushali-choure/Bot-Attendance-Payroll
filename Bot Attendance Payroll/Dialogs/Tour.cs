@@ -15,10 +15,8 @@ namespace Bot_Attendance_Payroll.Dialogs
     {
         public Task StartAsync(IDialogContext context)
         {
-            var tourform = FormDialog.FromForm(FormFlowTour.TourForm, FormOptions.PromptInStart);
-            context.Call(tourform,MessageReceivedAsync);
-          
-
+            context.PostAsync("Yes you can apply for tour<br>"+ "*May I help Help in Booking*");
+            context.Wait(MessageReceivedAsync);
             return Task.CompletedTask;
         }
 

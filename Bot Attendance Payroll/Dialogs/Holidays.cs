@@ -13,10 +13,32 @@ namespace Bot_Attendance_Payroll.Dialogs
         public async Task StartAsync(IDialogContext context)
         {
             var Type = FormDialog.FromForm(HolidayFormFlow.HolidayForm, FormOptions.PromptInStart);
-            context.Call(Type, DisplayHoliday);
+            context.Call(Type, HolidaySelection);
         }
 
-        private async Task DisplayHoliday(IDialogContext context, IAwaitable<object> result)
+        private async  Task HolidaySelection(IDialogContext context, IAwaitable<HolidayFormFlow> result)
+        {
+            var token = await result;
+            if (token.holidayType.ToString().Equals("Optional"))
+            {
+                await context.PostAsync("Optional Holiday List");
+                context.Done(true);
+            }
+            else if (token.holidayType.ToString().Equals("Mandatory"))
+            {
+                await context.PostAsync("Mandatory Holiday List");
+                context.Done(true);
+            }
+            else if (token.holidayType.ToString().Equals("All"))
+            {
+                await context.PostAsync("All Holiday List");
+                context.Done(true);
+            }
+
+        }
+
+        
+            private async Task DisplayHoliday(IDialogContext context, IAwaitable<object> result)
         {
             await context.PostAsync("All holidays");
 

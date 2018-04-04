@@ -192,6 +192,7 @@
     <Compile Include="Dialogs\AuthenticationOfUser.cs" />
     <Compile Include="Dialogs\Avg_Hrs.cs" />
     <Compile Include="Dialogs\AzureAuthentication.cs" />
+    <Compile Include="Dialogs\Bank_Account.cs" />
     <Compile Include="Dialogs\Base_pay.cs" />
     <Compile Include="Dialogs\Compoff.cs" />
     <Compile Include="Dialogs\CompOffFormFlow.cs" />
@@ -213,6 +214,7 @@
     <Compile Include="Dialogs\Join_date.cs" />
     <Compile Include="Dialogs\Late_Comings.cs" />
     <Compile Include="Dialogs\LeaveFormFlow.cs" />
+    <Compile Include="Dialogs\Leave_Encashment_types.cs" />
     <Compile Include="Dialogs\LopDetails.cs" />
     <Compile Include="Dialogs\Lta_allowance.cs" />
     <Compile Include="Dialogs\Medical_allowance.cs" />

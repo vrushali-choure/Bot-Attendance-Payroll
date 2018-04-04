@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using System.Web.Configuration;
+using System.Diagnostics;
 
 namespace Bot_Attendance_Payroll
 {
@@ -36,9 +37,12 @@ namespace Bot_Attendance_Payroll
 
        
         public async Task<HttpResponseMessage> Post([FromBody]Activity activity)
+
         {
             if (activity.Type == ActivityTypes.Message)
             {
+               
+
                 await Conversation.SendAsync(activity, MakeRoot);
             }
             else
@@ -73,7 +77,7 @@ namespace Bot_Attendance_Payroll
                         {
                             var reply = message.CreateReply();
                             var msg = message.CreateReply();
-                            reply.Text = $"Welcome {newMember.Name}!<br>"+"Please enter your **USERNAME**";
+                            reply.Text = $"Welcome {newMember.Name}!<br>"+"Please type **HELLO** to begin chat";
                             client.Conversations.ReplyToActivityAsync(reply);
                             Attachment attachment1 = new Attachment();
                             attachment1.ContentType = "image/png";

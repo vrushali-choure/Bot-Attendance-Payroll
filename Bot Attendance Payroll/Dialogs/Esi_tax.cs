@@ -45,7 +45,7 @@ namespace Bot_Attendance_Payroll.Dialogs
             var token = (string)obj["token"];
             if(token==null)
             {
-                context.PostAsync("Need to Login to access data");
+                await context.PostAsync("Need to Login to access data");
                 context.Call(new UserLogin(), ResumeAfteNullToken);
             
             }
@@ -61,7 +61,7 @@ namespace Bot_Attendance_Payroll.Dialogs
 
         private async Task ResumeAfteNullToken(IDialogContext context, IAwaitable<object> result)
         {
-            context.PostAsync("Login Successful!!!");
+            await context.PostAsync("Login Successful!!!");
         }
     }
     public class SessionResponse

@@ -13,17 +13,11 @@ namespace Bot_Attendance_Payroll.Dialogs
     {
         public async Task StartAsync(IDialogContext context)
         {
-            var outdoor = FormDialog.FromForm(OutdoorDutyFormFlow.OutdoorDutyForm, FormOptions.PromptInStart);
-            context.Call(outdoor, OutdoorDutyApproval);
-           
+            context.PostAsync("Yes you can Apply for Outdoor duty");
+            context.Done(true);
         }
 
-        private async Task OutdoorDutyApproval(IDialogContext context, IAwaitable<OutdoorDutyFormFlow> result)
-        {
-            await context.PostAsync("Your request is sent for approval");
-            context.Done<object>(null);
-        }
-
+        
         
     }
 }
