@@ -13,7 +13,7 @@ namespace Bot_Attendance_Payroll.Dialogs
 
         public async Task StartAsync(IDialogContext context)
         {
-            await context.PostAsync("Misspunch Details<br>");
+            await context.PostAsync("Misspunch Details are");
 
             context.Done(true);
 

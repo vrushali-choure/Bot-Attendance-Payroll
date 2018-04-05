@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="repository\AuthenticationCalling.cs" />
+    <Compile Include="repository\ProbationPeriodClient.cs" />
     <Compile Include="repository\ProductCalling.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

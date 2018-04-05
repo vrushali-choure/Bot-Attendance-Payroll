@@ -228,7 +228,7 @@
     <Compile Include="Dialogs\Pf_contribution.cs" />
     <Compile Include="Dialogs\Pf_number.cs" />
     <Compile Include="Dialogs\Professional_tax_deducted.cs" />
-    <Compile Include="Dialogs\Projected_tax.cs" />
+    <Compile Include="Dialogs\Probation_Period.cs" />
     <Compile Include="Dialogs\SandwichLeave.cs" />
     <Compile Include="Dialogs\Section80C.cs" />
     <Compile Include="Dialogs\Section80D.cs" />
@@ -251,6 +251,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\EmployeeDetailsForm.cs" />
+    <Compile Include="Models\AuthenticationRequest.cs" />
+    <Compile Include="Models\ServiceResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -265,9 +267,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Zest_Client\Zest_Client.csproj">
       <Project>{69fc6a9e-d84f-4e31-a305-80588b9c57e5}</Project>

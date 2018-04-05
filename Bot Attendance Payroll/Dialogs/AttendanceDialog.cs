@@ -129,14 +129,13 @@ namespace Bot_Attendance_Payroll.Dialogs
         }
 
       
-
-       
+         
               
         //6.Misspunch
         [LuisIntent("Mispunch")]
         private async Task CallingMisspunchMethod(IDialogContext context, LuisResult result)
        {
-            await context.PostAsync("I am Misspunch");
+            
             context.Call(new Misspunch(), ResumeAfterCallingMisspunch);
         }
 
